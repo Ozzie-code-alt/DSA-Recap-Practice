@@ -111,12 +111,63 @@ const ShowBST = (Prob2root) => {
   }
 };
 
-let Prob2root = new Problem2(50);
-Prob2root = insertNodeProb2(Prob2root, 25);
-Prob2root = insertNodeProb2(Prob2root, 3);
-Prob2root = insertNodeProb2(Prob2root, 26);
-Prob2root = insertNodeProb2(Prob2root, 30);
-Prob2root = insertNodeProb2(Prob2root, 60);
-Prob2root = insertNodeProb2(Prob2root, 67);
+// let Prob2root = new Problem2(50);
+// Prob2root = insertNodeProb2(Prob2root, 25);
+// Prob2root = insertNodeProb2(Prob2root, 3);
+// Prob2root = insertNodeProb2(Prob2root, 26);
+// Prob2root = insertNodeProb2(Prob2root, 30);
+// Prob2root = insertNodeProb2(Prob2root, 60);
+// Prob2root = insertNodeProb2(Prob2root, 67);
 
-ShowBST(Prob2root);
+// ShowBST(Prob2root);
+
+//another Binary tree
+
+class ObjectNode {
+  constructor(key) {
+    this.key = key;
+    this.leftNode = null;
+    this.rightNode = null;
+  }
+}
+
+const insertNodeData = (root, key) => {
+
+  if (root === null) {
+    return new ObjectNode(key);
+  }
+
+  if (root.key == key) {
+    return root;
+  }
+
+  if (key < root.key) {
+    root.leftNode = insertNodeData(root.leftNode, key);
+
+  } else if (key > root.key) {
+    root.rightNode = insertNodeData(root.rightNode, key);
+  }
+  return root;
+};
+
+//traversal Utility Function
+
+const logTree = (root) => {
+  if (root !== null) {
+    logTree(root.leftNode);
+    console.log(root.key + ' ');
+    logTree(root.rightNode);
+  }
+};
+
+
+
+let Firstroot = new ObjectNode(90); // first key
+root = insertNodeData(Firstroot, 105);
+root = insertNodeData(Firstroot, 3);
+root = insertNodeData(Firstroot, 26);
+root = insertNodeData(Firstroot, 30);
+root = insertNodeData(Firstroot, 60);
+root = insertNodeData(Firstroot, 67);
+
+logTree(root);
